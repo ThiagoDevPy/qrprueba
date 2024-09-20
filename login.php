@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
         $_SESSION['user_id'] = $usuario['id'];
-        header("Location: index.php");
+        header("Location: /index.php");
         exit();
     } else {
         echo "Usuario no encontrado.";
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <form method="POST">
         <input type="text" name="nombre" placeholder="Nombre de usuario" required>
-        <button type="submit">Iniciar Sesión</button>
+        <button type="submit">Iniciar Sesión 1</button>
     </form>
 </body>
 </html>
