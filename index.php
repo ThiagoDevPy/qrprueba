@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_id'])) {
     </style>
 </head>
 <body>
-    <h1>Bienvenido, Usuario</h1>
+    <h1>Bienvenido, Usuario!</h1>
     <div id="reader"></div>
 
     <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
