@@ -12,54 +12,92 @@ if (!isset($_SESSION['user_id'])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Asistencia</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        #reader {
-            width: 300px;
-            height: 300px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit-no" name="viewport">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+
+    <link rel="stylesheet" href="css/blue.css">
+
+
+    <link rel="stylesheet" href="../public/css/_all-skins.min.css">
 </head>
+
+
+<style>
+    #preview {
+        width: 80%;
+        margin: auto;
+    }
+
+    .main-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+
+
 <body>
-    <h1>Bienvenido, Usuario</h1>
-    <div id="reader"></div>
+    <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
 
-    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
-    <script>
-        const html5QrCode = new Html5Qrcode("reader");
+                </div>
 
-        const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-            html5QrCode.stop().then(ignore => {
-                window.location.href = decodedText;
-            }).catch(err => {
-                console.error("Error al detener el escáner: ", err);
-            });
-        };
+            </div>
 
-        const qrCodeErrorCallback = (errorMessage) => {
-            console.log("Error de escaneo:", errorMessage);
-        };
+        </nav>
+    </header>
 
-        // Comenzar a escanear
-        html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 },
-            qrCodeSuccessCallback,
-            qrCodeErrorCallback
-        ).catch(err => {
-            console.error("Error al iniciar el escáner: ", err);
-        });
-    </script>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <h4>Registro de asistencia</h4>
+            </div>
+            <div id="camara">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div id="cuadro">
+                        <video class="border border-primary" id="preview"></video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-xs12">
+                <button type="button" id="btnIngreso" onclick="iniciaCamara()" class="btn btn-success">Iniciar camara</button>
+
+                <button type="button" id="btnIngreso" onclick="apagaCamara()" class="btn btn-warning">Apagar camara</button>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+
+    <script src=""></script>
+
 </body>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootbox.min.js"></script>
+    <script type="text/javascript" src="scripts/asistencia.js"></script>
 </html>
 
 <?php
