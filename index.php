@@ -39,12 +39,11 @@ if (!isset($_SESSION['user_id'])) {
 
 
 <style>
-    #preview {
-        width: 300px; /* Ajusta el ancho según lo que necesites */
-        height: 300px; /* Ajusta la altura según lo que necesites */
-        border: 1px solid #ccc;
-        object-fit: cover; /* Asegura que el video se ajuste al cuadro */  
-    }
+   #canvas {
+            width: 300px; /* Ajusta el ancho según lo que necesites */
+            height: 300px; /* Ajusta la altura según lo que necesites */
+            border: 1px solid #ccc;
+        }
 
     .main-footer {
         position: fixed;
@@ -76,7 +75,7 @@ if (!isset($_SESSION['user_id'])) {
             <div id="camara">
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <div id="cuadro">
-                        <video class="border border-primary" id="preview"></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
                     </div>
                 </div>
             </div>
@@ -94,12 +93,13 @@ if (!isset($_SESSION['user_id'])) {
     </footer>
 
     <script src=""></script>
-
-</body>
-
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootbox.min.js"></script>
     <script type="text/javascript" src="scripts/asistencia.js"?<?php echo time(); ?>></script>
+
+</body>
+
+   
 </html>
 
 <?php
