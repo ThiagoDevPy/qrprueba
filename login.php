@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require 'conexion.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
         $_SESSION['user_id'] = $usuario['id'];
-        header("Location: /index.php");
+        header("Location: index.php");
         exit();
     } else {
         echo "Usuario no encontrado.";
@@ -31,3 +32,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </body>
 </html>
+
