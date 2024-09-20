@@ -13,4 +13,4 @@ if ($mysqli->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 echo "Conectado exitosamente";
-?>
+

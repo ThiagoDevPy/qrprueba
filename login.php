@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'conexion.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $mysqli->real_escape_string($_POST['nombre']);
 
