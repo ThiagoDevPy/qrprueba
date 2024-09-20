@@ -12,8 +12,16 @@ var scanner = new Instascan.Scanner({
 function iniciaCamara() {
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-            const rearCamera = cameras.find(camera => camera.facingMode === 'environment') || cameras[cameras.length - 1];
-            scanner.start(rearCamera);
+            // Buscar la cámara trasera primero
+            let rearCamera = cameras.find(camera => camera.facingMode === 'environment');
+
+            if (rearCamera) {
+                scanner.start(rearCamera);
+            } else {
+                // Si no hay cámara trasera, usar la primera cámara disponible
+                scanner.start(cameras[0]);
+                alert('No se encontró cámara trasera. Usando la cámara frontal.');
+            }
 
             // Mostrar el canvas
             document.getElementById('canvas').style.display = 'block';
