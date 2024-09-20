@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 session_start();
 require 'conexion.php';
 require 'phpqrcode/qrlib.php'; // Incluye la biblioteca
@@ -31,3 +33,8 @@ QRcode::png($qr_code_data, $qr_file, QR_ECLEVEL_L, 10); // Genera el QR code
 
 </body>
 </html>
+
+<?php
+ob_end_flush();
+
+?>

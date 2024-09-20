@@ -44,3 +44,8 @@ QRcode::png($qr_code_data, $qr_file, QR_ECLEVEL_L, 10); // Genera el QR code
     </script>
 </body>
 </html>
+
+<?php
+ob_end_flush();
+
+?>
