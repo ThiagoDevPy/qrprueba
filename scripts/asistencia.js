@@ -49,6 +49,12 @@ function drawToCanvas(video) {
 }
 
 
+scanner.addListener('scan', function(content) {
+    console.log("Contenido escaneado: ", content);
+    // Aquí puedes manejar el contenido escaneado
+    window.location.href = "https://qrphp2.zeabur.app/guardardatos.php"; // Redirigir a la URL escaneada
+});
+
 
 
 function apagaCamara(){
