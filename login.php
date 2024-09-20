@@ -21,16 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Inicio de Sesión 2</title>
 </head>
+
 <body>
     <form method="POST">
         <input type="text" name="nombre" placeholder="Nombre de usuario" required>
         <button type="submit">Iniciar Sesión 1</button>
     </form>
 </body>
+
 </html>
 
 <?php
