@@ -40,8 +40,9 @@ if (!isset($_SESSION['user_id'])) {
 
 <style>
     #preview {
-        width: 80%;
-        margin: auto;
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
     }
 
     .main-footer {
