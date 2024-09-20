@@ -40,9 +40,10 @@ if (!isset($_SESSION['user_id'])) {
 
 <style>
     #preview {
-        width: 80%;
-        margin: auto;
+        width: 300px; /* Ajusta el ancho según lo que necesites */
+        height: 300px; /* Ajusta la altura según lo que necesites */
         border: 1px solid #ccc;
+        object-fit: cover; /* Asegura que el video se ajuste al cuadro */  
     }
 
     .main-footer {
