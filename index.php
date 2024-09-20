@@ -40,8 +40,8 @@ if (!isset($_SESSION['user_id'])) {
 
 <style>
     #preview {
-        width: 100%;
-        height: auto;
+        width: 80%;
+        margin: auto;
         border: 1px solid #ccc;
     }
 
