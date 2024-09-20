@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Genera un QR único cada 5 minutos
-$qr_code_data = "http://localhost/php/prueba/guardardatos.php?user_id=" . $_SESSION['user_id'];
+$qr_code_data = "https://phpqr.zeabur.app/guardardatos.php?user_id=" . $_SESSION['user_id'];
 
 // Crea un archivo de imagen para el QR
 $qr_file = 'qrcodes/qr_' . $_SESSION['user_id'] . '.png';
