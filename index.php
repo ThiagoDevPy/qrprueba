@@ -98,7 +98,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootbox.min.js"></script>
-    <script type="text/javascript" src="scripts/asistencia.js"></script>
+    <script type="text/javascript" src="scripts/asistencia.js"?<?php echo time(); ?>></script>
 </html>
 
 <?php
