@@ -1,8 +1,7 @@
 <?php
 define("ZONA_HORARIA", "America/Asuncion");
 date_default_timezone_set(ZONA_HORARIA);
-$timeZone = 'America/Asuncion'; // O la zona horaria que necesites
-$mysqli->query("SET time_zone = '$timeZone'");
+
 session_start();
 require 'conexion.php';
 
