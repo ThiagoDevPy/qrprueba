@@ -9,16 +9,24 @@ var scanner = new Instascan.Scanner({
 });
 
 
+
+
+
+
+
 function iniciaCamara() {
+  
     Instascan.Camera.getCameras().then(function(cameras) {
         if (cameras.length > 0) {
             // Busca la cámara trasera
             const rearCamera = cameras.find(camera => camera.facing === 'environment');
             if (rearCamera) {
-                // Inicia el escáner con la cámara trasera
                 scanner.start(rearCamera);
+                document.getElementById('canvas').style.display = 'block';
+                drawToCanvas(scanner.video); 
             } else {
-                console.error('No se encontró una cámara trasera.');
+                console.error('No se encontró una cámara trasera. Usando la cámara frontal.');
+                scanner.start(cameras[0]); // Inicia la cámara frontal si no hay trasera
             }
         } else {
             console.error('No se encontraron cámaras.');
@@ -26,14 +34,17 @@ function iniciaCamara() {
     }).catch(function(e) {
         console.error(e);
     });
- 
 
 }
+
+
+
 
 
 function drawToCanvas(video) {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
+
     canvas.width = 300; // Asegúrate de que el canvas tenga el mismo tamaño
     canvas.height = 300;
 
