@@ -9,7 +9,7 @@ if (isset($_GET['user_id'])) {
     $stmt->bind_param("i", $user_id);
 
     if ($stmt->execute()) {
-        echo "Asistencia guardada exitosamente.";
+        header("Location: guardarexito.php");
     } else {
         echo "Error al guardar asistencia: " . $stmt->error;
     }
