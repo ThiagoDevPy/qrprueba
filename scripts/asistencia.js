@@ -10,22 +10,23 @@ var scanner = new Instascan.Scanner({
 
 
 function iniciaCamara() {
-    Instascan.Camera.getCameras().then(function (cameras) {
+    Instascan.Camera.getCameras().then(function(cameras) {
         if (cameras.length > 0) {
-            // Buscar la cámara trasera primero 
-                scanner.start(cameras[3]);
-            
-            // Mostrar el canvas
-            document.getElementById('canvas').style.display = 'block';
-            drawToCanvas(scanner.video); // Llamar a la función para dibujar
+            // Busca la cámara trasera
+            const rearCamera = cameras.find(camera => camera.facing === 'environment');
+            if (rearCamera) {
+                // Inicia el escáner con la cámara trasera
+                scanner.start(rearCamera);
+            } else {
+                console.error('No se encontró una cámara trasera.');
+            }
         } else {
-            alert('No se encontró una cámara disponible');
-            console.log('No se encontró una cámara disponible');
+            console.error('No se encontraron cámaras.');
         }
-    }).catch(function (e) {
+    }).catch(function(e) {
         console.error(e);
     });
-
+ 
 
 }
 
