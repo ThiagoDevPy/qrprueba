@@ -19,7 +19,7 @@ function iniciaCamara() {
             document.getElementById('canvas').style.display = 'block';
             drawToCanvas(scanner.video); // Llamar a la función para dibujar
         } else {
-            alert('No se encontró una cámara disponible');
+            alert('No se encontró una cámara');
             console.log('No se encontró una cámara disponible');
         }
     }).catch(function (e) {
