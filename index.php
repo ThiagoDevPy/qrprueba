@@ -5,8 +5,9 @@ require 'conexion.php';
 require 'phpqrcode/qrlib.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
+    // Redirigir al usuario a la página de inicio de sesión si no está autenticado
+    header('Location: login.php'); // Cambia 'login.html' por el nombre de tu página de inicio de sesión
+    exit(); // Asegúrate de salir del script después de redirigir
 }
 ?>
 
@@ -34,7 +35,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="css/blue.css">
 
 
-    <link rel="stylesheet" href="../public/css/_all-skins.min.css">
+    <link rel="stylesheet" href="css/_all-skins.min.css">
 </head>
 
 

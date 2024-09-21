@@ -43,12 +43,19 @@ function drawToCanvas(video) {
 }
 
 
+
+
 scanner.addListener('scan', function(content) {
     console.log("Contenido escaneado: ", content);
-    // Aquí puedes manejar el contenido escaneado
-    window.location.href = "https://qrphp2.zeabur.app/guardardatos.php"; // Redirigir a la URL escaneada
-});
 
+    // Aquí puedes verificar el contenido del QR
+    if (content.includes('guardardatos.php')) {
+        // Si la URL contiene "guardarusuario.php", redirigir
+        window.location.href = content; // Redirigir a la URL escaneada
+    } else {
+        alert('URL no válida o no reconocida: ' + content);
+    }
+});
 
 
 function apagaCamara(){
