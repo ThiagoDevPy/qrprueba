@@ -82,7 +82,7 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </div>
 
-            <div class="col-lg-12 col-md-12 col-xs-12 p-5">
+            <div class="col-lg-12 col-md-12 col-xs-12">
                 <button type="button" id="btnIngreso" onclick="iniciaCamara()" class="btn btn-success">Iniciar camara</button>
 
                 <button type="button" id="btnIngreso" onclick="apagaCamara()" class="btn btn-warning">Apagar camara</button>
