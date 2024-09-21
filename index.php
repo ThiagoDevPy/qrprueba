@@ -41,9 +41,9 @@ if (!isset($_SESSION['user_id'])) {
 
 <style>
    #canvas {
-            width: 80%; /* Ajusta el ancho según lo que necesites */
+            width: 300px; /* Ajusta el ancho según lo que necesites */
              /* Ajusta la altura según lo que necesites */
-            
+            height: 300px;
             margin: auto;
         }
 
@@ -77,12 +77,12 @@ if (!isset($_SESSION['user_id'])) {
             <div id="camara">
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <div id="cuadro">
-                    <canvas id="canvas" class=""></canvas>
+                    <canvas id="canvas" class="border border-primary"></canvas>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-xs-12 p-5">
                 <button type="button" id="btnIngreso" onclick="iniciaCamara()" class="btn btn-success">Iniciar camara</button>
 
                 <button type="button" id="btnIngreso" onclick="apagaCamara()" class="btn btn-warning">Apagar camara</button>
