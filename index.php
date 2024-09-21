@@ -43,7 +43,7 @@ if (!isset($_SESSION['user_id'])) {
    #canvas {
             width: 80%; /* Ajusta el ancho según lo que necesites */
              /* Ajusta la altura según lo que necesites */
-            border: 1px solid #ccc;
+            
             margin: auto;
         }
 
