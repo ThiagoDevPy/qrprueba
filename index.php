@@ -77,7 +77,7 @@ if (!isset($_SESSION['user_id'])) {
             <div id="camara">
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <div id="cuadro">
-                    <canvas id="canvas" class="border border-primary"></canvas>
+                    <canvas id="canvas" class=""></canvas>
                     </div>
                 </div>
             </div>
