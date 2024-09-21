@@ -13,7 +13,7 @@ function iniciaCamara() {
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
             // Buscar la cámara trasera primero 
-                scanner.start(cameras[1]);
+                scanner.start(cameras[2]);
             
             // Mostrar el canvas
             document.getElementById('canvas').style.display = 'block';
