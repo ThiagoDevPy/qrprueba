@@ -1,4 +1,6 @@
 <?php
+define("ZONA_HORARIA", "America/Asuncion");
+date_default_timezone_set(ZONA_HORARIA);
 session_start();
 require 'conexion.php';
 
