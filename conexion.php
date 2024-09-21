@@ -1,8 +1,8 @@
 <?php
-$host = 'autorack.proxy.rlwy.net'; // Ejemplo: 'mysql-123456.c.database.azure.com'
-$port = '56145'; // Asegúrate de usar el puerto correcto
+$host = 'junction.proxy.rlwy.net'; // Ejemplo: 'mysql-123456.c.database.azure.com'
+$port = '35111'; // Asegúrate de usar el puerto correcto
 $user = 'root'; // Tu nombre de usuario
-$pass = 'nZDgRwhZOLNoyCKpdGhqACgEaEWFPQAe'; // Tu contraseña
+$pass = 'ZbTFEpClZPxvUOOMlKcDPyIJLUEnPQje'; // Tu contraseña
 $dbname = 'railway'; // El nombre de la base de datos
 
 // Crear la conexión
