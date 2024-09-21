@@ -9,14 +9,11 @@ var scanner = new Instascan.Scanner({
 });
 
 
-
 function iniciaCamara() {
-  
     Instascan.Camera.getCameras().then(function (cameras) {
-        const rearCamera = cameras.find(camera => camera.facing === 'environment');
-        if (rearCamera) {
+        if (cameras.length > 0) {
             // Buscar la cámara trasera primero 
-            scanner.start(rearCamera);
+                scanner.start(cameras[1]);
             
             // Mostrar el canvas
             document.getElementById('canvas').style.display = 'block';
@@ -28,6 +25,7 @@ function iniciaCamara() {
     }).catch(function (e) {
         console.error(e);
     });
+
 
 }
 
