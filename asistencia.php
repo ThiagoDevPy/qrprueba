@@ -11,12 +11,19 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Genera un QR único cada 5 minutos
-$qr_code_data = "https://qrphp2.zeabur.app/guardardatos.php?user_id=" . $_SESSION['user_id'];
 
-// Crea un archivo de imagen para el QR
-$qr_file = 'qrcodes/qr_' . $_SESSION['user_id'] . '.png';
-QRcode::png($qr_code_data, $qr_file, QR_ECLEVEL_L, 10); // Genera el QR code
+
+$id = uniqid(); // o puedes usar time() para el timestamp
+
+// Guardar en la sesión o en la base de datos si es necesario
+$_SESSION['qr_id'] = $id;
+
+// La URL a codificar en el QR
+$qr_code_data = "https://qrphp2.zeabur.app/guardardatos.php?user_id=" . $id;
+
+
+// Generar el QR
+QRcode::png($qr_code_data, 'qrcodes/qr.png', QR_ECLEVEL_L, 10);
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +35,19 @@ QRcode::png($qr_code_data, $qr_file, QR_ECLEVEL_L, 10); // Genera el QR code
 </head>
 
 <body>
-    <h1>Listar Asistencias</h1>
-    <img src="<?php echo $qr_file; ?>" alt="QR Code">
+<h1>Escanear QR</h1>
+    <img id="qrCode" src="qrcodes/qr.png" alt="QR Code" />
+
+    <script>
+      function updateQRCode() {
+            // Cambiar la URL de la imagen para forzar la recarga
+            const qrImage = document.getElementById('qrCode');
+            qrImage.src = 'qrcodes/qr.png?' + new Date().getTime(); // Añadir timestamp
+        }
+
+        // Actualiza el QR cada 2 minutos (120000 ms)
+        setInterval(updateQRCode, 120000);
+    </script>
 
 
 

@@ -41,9 +41,10 @@ if (!isset($_SESSION['user_id'])) {
 
 <style>
    #canvas {
-            width: 300px; /* Ajusta el ancho según lo que necesites */
-            height: 300px; /* Ajusta la altura según lo que necesites */
+            width: 80%; /* Ajusta el ancho según lo que necesites */
+             /* Ajusta la altura según lo que necesites */
             border: 1px solid #ccc;
+            margin: auto;
         }
 
     .main-footer {
@@ -71,17 +72,17 @@ if (!isset($_SESSION['user_id'])) {
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12">
-                <h4>Registro de asistencia</h4>
+                <h2>Registro de asistencia</h2>
             </div>
             <div id="camara">
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <div id="cuadro">
-                    <canvas id="canvas" style="display: none;"></canvas>
+                    <canvas id="canvas" class="border border-primary"></canvas>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-12 col-md-12 col-xs12">
+            <div class="col-lg-12 col-md-12 col-xs-12">
                 <button type="button" id="btnIngreso" onclick="iniciaCamara()" class="btn btn-success">Iniciar camara</button>
 
                 <button type="button" id="btnIngreso" onclick="apagaCamara()" class="btn btn-warning">Apagar camara</button>
