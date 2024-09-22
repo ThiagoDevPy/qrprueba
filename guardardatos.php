@@ -7,7 +7,7 @@ require 'conexion.php';
 if (isset($_GET['user_id'])) {
     $user_id = $_SESSION['user_id'];
     
-    $stmt = $conexion->prepare("INSERT INTO asistencia (user_id, fecha) VALUES (?, NOW())");
+    $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'ENTRADA');");
     $stmt->bind_param("i", $user_id);
 
     if ($stmt->execute()) {
