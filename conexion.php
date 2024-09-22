@@ -1,9 +1,9 @@
 <?php
-$host = 'junction.proxy.rlwy.net'; // Ejemplo: 'mysql-123456.c.database.azure.com'
-$port = '35111'; // Asegúrate de usar el puerto correcto
+$host = 'ewr1.clusters.zeabur.com'; // Ejemplo: 'mysql-123456.c.database.azure.com'
+$port = '31480'; // Asegúrate de usar el puerto correcto
 $user = 'root'; // Tu nombre de usuario
-$pass = 'ZbTFEpClZPxvUOOMlKcDPyIJLUEnPQje'; // Tu contraseña
-$dbname = 'railway'; // El nombre de la base de datos
+$pass = '860e3v9YbismGq1z54yjH27cMKUkNnAO'; // Tu contraseña
+$dbname = 'zeabur'; // El nombre de la base de datos
 
 // Crear la conexión
 $mysqli = new mysqli($host, $user, $pass, $dbname, $port);
