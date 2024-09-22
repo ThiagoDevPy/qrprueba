@@ -47,8 +47,13 @@ if (!isset($_SESSION['user_id'])) {
         <h2 class="mt-4">Registro de asistencia</h2>
         <div class="card mt-4">
             <div class="card-body">
+                
+            <div id="camara">
+                <div id="cuadro">
                 <div style="width: 300px; height: 300px; margin: auto;">
                     <canvas id="canvas"></canvas>
+                </div>
+                </div>
                 </div>
                 <button type="button" onclick="iniciaCamara()" class="btn btn-success mt-3">Iniciar cámara <i class="fa fa-camera"></i></button>
                 <button type="button" onclick="apagaCamara()" class="btn btn-warning mt-3">Apagar cámara <i class="fa fa-stop"></i></button>
@@ -74,8 +79,10 @@ if (!isset($_SESSION['user_id'])) {
                 </ul>
     </footer>
 
-    <script type="text/javascript" src="scripts/asistencia.js"></script>
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootbox.min.js"></script>
+    <script type="text/javascript" src="scripts/asistencia.js"?<?php echo time(); ?>></script>
 </body>
 </html>
 
