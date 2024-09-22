@@ -1,14 +1,15 @@
 <?php
 session_start(); // Iniciar la sesión
 
-require "conexion.php"; // Asegúrate de que este archivo esté correctamente configurado
+include 'conexion.php'; // Asegúrate de que este archivo esté correctamente configurado
 
 // Obtener y sanitizar datos POST
-$usuario = filter_var(trim($_POST['usuario']), FILTER_SANITIZE_STRING);
-$contrasena = trim($_POST['contrasena']);
+$usuario = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
+$contrasena = isset($_POST['contrasena']) ? trim($_POST['contrasena']) : '';
 
 // Preparar respuesta
 $response = ['success' => false, 'message' => 'Nombre de usuario o contraseña incorrectos.'];
+
 
 if ($usuario && $contrasena) {
     // Preparar y ejecutar la consulta
@@ -37,3 +38,6 @@ $conexion->close();
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>
+
+
+
