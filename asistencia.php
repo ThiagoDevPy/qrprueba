@@ -19,7 +19,7 @@ $id = uniqid(); // o puedes usar time() para el timestamp
 $_SESSION['qr_id'] = $id;
 
 // La URL a codificar en el QR
-$qr_code_data = "https://qrphp2.zeabur.app/guardardatos.php?user_id=" . $id;
+$qr_code_data = "https://qrcode.zeabur.app/asistencia.php";
 
 
 // Generar el QR
