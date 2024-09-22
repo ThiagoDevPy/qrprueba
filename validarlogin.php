@@ -1,28 +1,29 @@
 <?php
 session_start(); // Iniciar la sesión
 
-include 'conexion.php'; // Asegúrate de que este archivo esté correctamente configurado
+require "conexion.php"; // Asegúrate de que este archivo esté correctamente configurado
 
 // Obtener y sanitizar datos POST
-$usuario = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
-$contrasena = isset($_POST['contrasena']) ? trim($_POST['contrasena']) : '';
+$usuario = filter_var(trim($_POST['usuario']), FILTER_SANITIZE_STRING);
+$contrasena = trim($_POST['contrasena']);
 
 // Preparar respuesta
 $response = ['success' => false, 'message' => 'Nombre de usuario o contraseña incorrectos.'];
 
-
 if ($usuario && $contrasena) {
     // Preparar y ejecutar la consulta
-    $stmt = $mysqli->prepare("SELECT idusuario, password_hash FROM usuarios WHERE username = ?");
+    $stmt = $conexion->prepare("SELECT id, password FROM usuarios WHERE login = ?");
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
     $result = $stmt->get_result();
     
     // Verificar si el usuario existe y si la contraseña es correcta
-    if ($row = $result->fetch_assoc()) {
-        if (password_verify($contrasena, $row['password_hash'])) {
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if (password_verify($contrasena, $row['password'])) {
             // Contraseña correcta
-            $_SESSION['user_id'] = $row['idusuario'];
+            $_SESSION['user_id'] = $row['id'];
+            session_regenerate_id(true); // Regenerar ID de sesión
             $response = ['success' => true, 'message' => 'Inicio de sesión exitoso.'];
         }
     }
@@ -30,13 +31,9 @@ if ($usuario && $contrasena) {
     $stmt->close();
 }
 
-$mysqli->close();
+$conexion->close();
 
 // Enviar respuesta JSON
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>
-
-
-
-

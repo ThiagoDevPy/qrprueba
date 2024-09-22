@@ -6,10 +6,10 @@ $pass = '860e3v9YbismGq1z54yjH27cMKUkNnAO'; // Tu contraseña
 $dbname = 'zeabur'; // El nombre de la base de datos
 
 // Crear la conexión
-$mysqli = new mysqli($host, $user, $pass, $dbname, $port);
+$conexion = new mysqli($host, $user, $pass, $dbname, $port);
 
 // Verificar la conexión
-if ($mysqli->connect_error) {
+if ($conexion->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 

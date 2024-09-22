@@ -7,7 +7,7 @@ require 'conexion.php';
 if (isset($_GET['user_id'])) {
     $user_id = $_SESSION['user_id'];
     
-    $stmt = $mysqli->prepare("INSERT INTO asistencia (user_id, fecha) VALUES (?, NOW())");
+    $stmt = $conexion->prepare("INSERT INTO asistencia (user_id, fecha) VALUES (?, NOW())");
     $stmt->bind_param("i", $user_id);
 
     if ($stmt->execute()) {
@@ -21,4 +21,4 @@ if (isset($_GET['user_id'])) {
     echo "No se recibió el ID del usuario.";
 }
 
-$mysqli->close();
+$conexion->close();
