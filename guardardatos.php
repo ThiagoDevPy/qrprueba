@@ -4,7 +4,7 @@ date_default_timezone_set(ZONA_HORARIA);
 session_start();
 require 'conexion.php';
 
-if (isset($_GET['user_id'])) {
+if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     
     $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'ENTRADA');");
