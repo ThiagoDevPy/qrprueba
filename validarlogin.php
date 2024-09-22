@@ -13,7 +13,7 @@ $response = ['success' => false, 'message' => 'Nombre de usuario o contraseña i
 
 if ($usuario && $contrasena) {
     // Preparar y ejecutar la consulta
-    $stmt = $mysqli->prepare("SELECT idusuario, password_hash FROM usuario WHERE username = ?");
+    $stmt = $mysqli->prepare("SELECT idusuario, password_hash FROM usuarios WHERE username = ?");
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
     $result = $stmt->get_result();
