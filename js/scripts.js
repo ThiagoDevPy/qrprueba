@@ -1,24 +1,25 @@
 function registrarUsuario() {
-    var nombre = document.getElementById('nombre').value;
-    var apellido = document.getElementById('apellido').value;
-    var cedula = document.getElementById('cedula').value;
-    var carrera = document.getElementById('carrera').value;
-    var telefono = document.getElementById('telefono').value;
+    var nombre = document.getElementById('nombre').value.trim();
+    var apellido = document.getElementById('apellido').value.trim();
+    var cedula = document.getElementById('cedula').value.trim();
+    var carrera = document.getElementById('carrera').value.trim();
+    var telefono = document.getElementById('telefono').value.trim();
 
+    // Verificar que ningún campo esté vacío
+    if (!nombre || !apellido || !cedula || !carrera || !telefono) {
+        alert('Por favor, completa todos los campos.');
+        return; // Detener la ejecución si algún campo está vacío
+    }
 
-    console.log(nombre + " " + apellido + " " + " " + cedula + " " + carrera);
-
+    console.log(nombre + " " + apellido + " " + cedula + " " + carrera);
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'registrarusuario.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
         if (xhr.status === 200) {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                alert(xhr.responseText);
-                window.location.href = 'login.php';
-            }
-
+            alert(xhr.responseText);
+            window.location.href = 'login.php';
         } else {
             alert('Error en la solicitud.');
         }
@@ -28,7 +29,7 @@ function registrarUsuario() {
         'nombre=' + encodeURIComponent(nombre) +
         '&apellido=' + encodeURIComponent(apellido) +
         '&cedula=' + encodeURIComponent(cedula) +
-        '&carrera=' + encodeURIComponent(carrera)+
+        '&carrera=' + encodeURIComponent(carrera) +
         '&telefono=' + encodeURIComponent(telefono)
     );
 
