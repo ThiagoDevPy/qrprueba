@@ -18,11 +18,7 @@ if (isset($_GET['id'])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // ID válido, marcar como utilizado
-        $stmt = $conexion->prepare("UPDATE qr SET estado = 'utilizado' WHERE qr_id = ?");
-        $stmt->bind_param("s", $id);
-        $stmt->execute();
-
+       
          // Aquí va la lógica para guardar los datos
         $user_id = $_SESSION['user_id'];
 

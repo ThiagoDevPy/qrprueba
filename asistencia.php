@@ -2,29 +2,27 @@
 ob_start();
 session_start();
 require 'conexion.php';
-require 'phpqrcode/qrlib.php'; // Incluye la biblioteca
+require 'phpqrcode/qrlib.php';
 
 // Verifica si el usuario ha iniciado sesión
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
+        
+       $new_id = uniqid();
+        $_SESSION['qr_id'] = $new_id;
+        $stmt = $conexion->prepare("INSERT INTO qr (qr_id, estado) VALUES (?, 'no utilizado')");
+        $stmt->bind_param("s", $new_id);
+        $stmt->execute();
 
-// Generar un nuevo ID único
-$id = uniqid(); 
+        $new_qr_code_data = "https://qrcode.zeabur.app/guardardatos.php?id=" . $new_id;
+        QRcode::png($new_qr_code_data, 'qrcodes/new_qr.png', QR_ECLEVEL_L, 10);
 
-// Guardar en la sesión o en la base de datos si es necesario
-$_SESSION['qr_id'] = $id;
+// Genera un nuevo QR si se solicita
 
-$stmt = $conexion->prepare("INSERT INTO qr (qr_id, estado) VALUES (?, 'no utilizado')");
-$stmt->bind_param("s", $id);
-$stmt->execute();
 
-// La URL a codificar en el nuevo QR, incluye el ID único
-$qr_code_data = "https://qrcode.zeabur.app/guardardatos.php?id=" . $id; 
 
-// Generar el nuevo QR
-QRcode::png($qr_code_data, 'qrcodes/qr.png', QR_ECLEVEL_L, 10);
 ?>
 
 <!DOCTYPE html>
@@ -32,16 +30,27 @@ QRcode::png($qr_code_data, 'qrcodes/qr.png', QR_ECLEVEL_L, 10);
 <head>
     <meta charset="UTF-8">
     <title>Asistencia</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1>Escanear QR</h1>
-    <img id="qrCode" src="qrcodes/qr.png?<?php echo time(); ?>" alt="QR Code" /> <!-- Agregar timestamp aquí -->
+    <img id="qrCode" src="qrcodes/new_qr.png" alt="QR Code" />
 
     <script>
         function updateQRCode() {
-            // Cambiar la URL de la imagen para forzar la recarga
-            const qrImage = document.getElementById('qrCode');
-            qrImage.src = 'qrcodes/qr.png?' + new Date().getTime(); // Añadir timestamp
+
+            const currentQrId = "<?php echo $_SESSION['qr_id']; ?>"; // Obtener el ID actual
+            console.log("ID actual:", currentQrId); // Verifica el ID
+            $.get('updateqr.php', { id: currentQrId }, function(data) {
+                const response = JSON.parse(data);
+                if (response.new_qr) {
+                    const qrImage = document.getElementById('qrCode');
+                    qrImage.src = response.new_qr + '?' + new Date().getTime(); // Añadir timestamp
+
+                }
+            }).fail(function() {
+                console.error('Error al actualizar el QR.');
+            });
         }
 
         // Actualiza el QR cada 2 minutos (120000 ms)
@@ -50,6 +59,7 @@ QRcode::png($qr_code_data, 'qrcodes/qr.png', QR_ECLEVEL_L, 10);
 </body>
 </html>
 
-<?php
+<?php 
 ob_end_flush();
+
 ?>
