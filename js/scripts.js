@@ -53,6 +53,7 @@ function login() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
+                console.log(xhr.responseText);
                var response = JSON.parse(xhr.responseText);
                 if (response.success) {
                     window.location.href = 'index.php'; // Redirigir al dashboard

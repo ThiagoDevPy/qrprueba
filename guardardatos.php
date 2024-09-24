@@ -5,6 +5,9 @@ session_start();
 $user_id = $_SESSION['user_id'];
 require 'conexion.php';
 
+$fecha = date("Y-m-d");
+$hora = date("H:i.s");
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
@@ -27,7 +30,7 @@ if (isset($_GET['id'])) {
         $resulta = $stmt->get_result();
 
         if ($resulta->num_rows == 1) {
-            $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'SALIDA');");
+            $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, '$fecha', '$hora', 'SALIDA');");
             $stmt->bind_param("i", $user_id);
             if ($stmt->execute()) {
                 header("Location: guardarexito.php");
@@ -41,7 +44,7 @@ if (isset($_GET['id'])) {
             // Aquí va la lógica para guardar los datos
             $user_id = $_SESSION['user_id'];
 
-            $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'ENTRADA');");
+            $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, '$fecha', '$hora', 'ENTRADA');");
             $stmt->bind_param("i", $user_id);
             if ($stmt->execute()) {
                 header("Location: guardarexito.php");
