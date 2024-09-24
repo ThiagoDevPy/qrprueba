@@ -18,19 +18,38 @@ if (isset($_GET['id'])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-       
-         // Aquí va la lógica para guardar los datos
-        $user_id = $_SESSION['user_id'];
 
-        $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'ENTRADA');");
-        $stmt->bind_param("i", $user_id);
+
+        $stmt = $conexion->prepare("SELECT * FROM asistencias WHERE id = $user_id;");
+        $stmt->bind_param("s", $id);
+        $stmt->execute();
+        $resulta = $stmt->get_result();
+
+        if ($resulta->num_rows > 0) {
+            $user_id = $_SESSION['user_id'];
+
+            $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'SALIDA');");
+            $stmt->bind_param("i", $user_id);
+        } elseif ($resulta->num_rows > 1) {
+
+            echo "Ya has registrado la salida y entrada";
+        } elseif ($resulta->num_rows == 0) {
+            // Aquí va la lógica para guardar los datos
+            $user_id = $_SESSION['user_id'];
+
+            $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'ENTRADA');");
+            $stmt->bind_param("i", $user_id);
+        }
+
+
+
 
         if ($stmt->execute()) {
             header("Location: guardarexito.php");
         } else {
             echo "Error al guardar asistencia: " . $stmt->error;
         }
-       
+
         echo "Datos guardados correctamente.";
     } else {
         die("ID no válido o ya ha sido utilizado.");
