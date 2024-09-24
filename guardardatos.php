@@ -27,10 +27,13 @@ if (isset($_GET['id'])) {
         $resulta = $stmt->get_result();
 
         if ($resulta->num_rows == 1) {
-            
-
             $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'SALIDA');");
             $stmt->bind_param("i", $user_id);
+            if ($stmt->execute()) {
+                header("Location: guardarexito.php");
+            } else {
+                echo "Error al guardar asistencia: " . $stmt->error;
+            }
         } elseif ($resulta->num_rows >= 2) {
 
             echo "Ya has registrado la salida y entrada";
@@ -40,18 +43,12 @@ if (isset($_GET['id'])) {
 
             $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'ENTRADA');");
             $stmt->bind_param("i", $user_id);
+            if ($stmt->execute()) {
+                header("Location: guardarexito.php");
+            } else {
+                echo "Error al guardar asistencia: " . $stmt->error;
+            }
         }
-
-
-
-
-        if ($stmt->execute()) {
-            header("Location: guardarexito.php");
-        } else {
-            echo "Error al guardar asistencia: " . $stmt->error;
-        }
-
-        echo "Datos guardados correctamente.";
     } else {
         die("ID no válido o ya ha sido utilizado.");
     }
