@@ -2,6 +2,7 @@
 define("ZONA_HORARIA", "America/Asuncion");
 date_default_timezone_set(ZONA_HORARIA);
 session_start();
+$user_id = $_SESSION['user_id'];
 require 'conexion.php';
 
 if (isset($_GET['id'])) {
@@ -20,13 +21,13 @@ if (isset($_GET['id'])) {
     if ($result->num_rows > 0) {
 
 
-        $stmt = $conexion->prepare("SELECT * FROM asistencias WHERE id = $user_id;");
-        $stmt->bind_param("s", $id);
+        $stmt = $conexion->prepare("SELECT * FROM asistencias WHERE empleado_id = ? ");
+        $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $resulta = $stmt->get_result();
 
         if ($resulta->num_rows > 0) {
-            $user_id = $_SESSION['user_id'];
+            
 
             $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'SALIDA');");
             $stmt->bind_param("i", $user_id);
