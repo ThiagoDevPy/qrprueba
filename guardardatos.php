@@ -35,8 +35,8 @@ if (isset($_GET['id'])) {
                 echo "Error al guardar asistencia: " . $stmt->error;
             }
         } elseif ($resulta->num_rows >= 2) {
-
-            echo "Ya has registrado la salida y entrada";
+            header("Location: guardarmensaje.php");
+            
         } elseif ($resulta->num_rows == 0) {
             // Aquí va la lógica para guardar los datos
             $user_id = $_SESSION['user_id'];
