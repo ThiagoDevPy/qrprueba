@@ -26,12 +26,12 @@ if (isset($_GET['id'])) {
         $stmt->execute();
         $resulta = $stmt->get_result();
 
-        if ($resulta->num_rows > 0) {
+        if ($resulta->num_rows == 1) {
             
 
             $stmt = $conexion->prepare("INSERT INTO asistencias (empleado_id, fecha,hora, tipo) VALUES (?, NOW(), NOW(), 'SALIDA');");
             $stmt->bind_param("i", $user_id);
-        } elseif ($resulta->num_rows > 1) {
+        } elseif ($resulta->num_rows >= 2) {
 
             echo "Ya has registrado la salida y entrada";
         } elseif ($resulta->num_rows == 0) {
