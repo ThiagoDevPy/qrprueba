@@ -3,7 +3,7 @@ $host = 'autorack.proxy.rlwy.net:32972'; // Ejemplo: 'mysql-123456.c.database.az
 $port = '32972'; // Asegúrate de usar el puerto correcto
 $user = 'root'; // Tu nombre de usuario
 $pass = 'cVExNQageAUHrpYLkVoOdvSmUaauNMxN'; // Tu contraseña
-$dbname = 'railway'; // El nombre de la base de datos
+$dbname = 'zeabur'; // El nombre de la base de datos
 
 // Crear la conexión
 $conexion = new mysqli($host, $user, $pass, $dbname, $port);
