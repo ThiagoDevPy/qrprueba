@@ -1,8 +1,8 @@
 <?php
-$host = 'autorack.proxy.rlwy.net:32972'; // Ejemplo: 'mysql-123456.c.database.azure.com'
-$port = '32972'; // Asegúrate de usar el puerto correcto
+$host = 'fra1.clusters.zeabur.com'; // Ejemplo: 'mysql-123456.c.database.azure.com'
+$port = '32285'; // Asegúrate de usar el puerto correcto
 $user = 'root'; // Tu nombre de usuario
-$pass = 'cVExNQageAUHrpYLkVoOdvSmUaauNMxN'; // Tu contraseña
+$pass = '12vF0CcQwG6ef9ZLHP5TEd3DzxY8V47J'; // Tu contraseña
 $dbname = 'zeabur'; // El nombre de la base de datos
 
 // Crear la conexión
