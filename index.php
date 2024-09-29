@@ -75,7 +75,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-    <header class="bg-header py-3">
+    <header class="bg-header py-1">
         <div class="container">
             <h1 class="text-center text-white"><img src="img/Logos-uninorte-05-1.png" alt=""></h1> <!-- Cambia esto por tu logo -->
         </div>
@@ -108,7 +108,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 
-    <footer class="bg-footer py-4 mt-auto">
+    <footer class="bg-footer py-2 mt-auto">
         <div class="container text-center"> <!-- Añadido text-center para centrar el contenido -->
             <h5>Contáctanos</h5>
             <ul class="list-unstyled">
