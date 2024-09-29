@@ -52,7 +52,7 @@ if (!isset($_SESSION['user_id'])) {
             /* Centra horizontalmente */
             align-items: center;
             /* Centra verticalmente */
-            height: 100vh;
+            height: 70vh;
             /* Opcional: ajusta la altura del contenedor */
         }
 
