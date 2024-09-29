@@ -9,24 +9,20 @@ var scanner = new Instascan.Scanner({
 });
 
 
+
+
+
 function iniciaCamara() {
-    Instascan.Camera.getCameras().then(function (cameras) {
+    Instascan.Camera.getCameras().then(function(cameras) {
         if (cameras.length > 0) {
-            // Buscar la cámara trasera primero 
-                scanner.start(cameras[1]);
-            
-            // Mostrar el canvas
-            document.getElementById('canvas').style.display = 'block';
-            drawToCanvas(scanner.video); // Llamar a la función para dibujar
+            let rearCamera = cameras.find(camera => camera.id.includes("back") || camera.id.includes("rear")) || cameras[0];
+            scanner.start(rearCamera);
         } else {
             alert('No se encontró una cámara');
-            console.log('No se encontró una cámara disponible');
         }
-    }).catch(function (e) {
+    }).catch(function(e) {
         console.error(e);
     });
-
-
 }
 
 
