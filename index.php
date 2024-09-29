@@ -37,22 +37,24 @@ if (!isset($_SESSION['user_id'])) {
 
     <link rel="stylesheet" href="css/_all-skins.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
+
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    
+
 </head>
 
 
 <style>
-   #canvas {
-            width: 300px; /* Ajusta el ancho según lo que necesites */
-             /* Ajusta la altura según lo que necesites */
-            height: 300px;
-            margin: auto;
-            border: 2px solid #007bff; /* Borde para destacar el área */
-            border-radius: 8px; 
-        }
+    #canvas {
+        width: 300px;
+        /* Ajusta el ancho según lo que necesites */
+        /* Ajusta la altura según lo que necesites */
+        height: 300px;
+        margin: auto;
+        border: 2px solid #007bff;
+        /* Borde para destacar el área */
+        border-radius: 8px;
+    }
 
     .main-footer {
         position: fixed;
@@ -60,73 +62,95 @@ if (!isset($_SESSION['user_id'])) {
         width: 100%;
     }
 
+    html,
     body {
-            background-color: #f8f9fa; /* Color de fondo del body */
-        }
-        .bg-header {
-            background-color: #007bff; /* Color azul para el header */
-        }
-        .bg-footer {
-            background-color: #0056b3; /* Color azul para el footer */
-            color: white; /* Color del texto en el footer */
-        }
+        height: 100%;
+        /* Asegura que el html y el body ocupen toda la altura */
+        margin: 0;
+        /* Elimina el margen por defecto */
+    }
 
-        footer{
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+    body {
+        display: flex;
+        flex-direction: column;
+        /* Coloca los elementos en columna */
+    }
+
+
+    main {
+        flex: 1;
+        /* Permite que el main ocupe todo el espacio disponible */
+    }
+
+
+    .bg-header {
+        background-color: #007bff;
+        /* Color azul para el header */
+    }
+
+    .bg-footer {
+        background-color: #0056b3;
+        /* Color azul para el footer */
+        color: white;
+        /* Color del texto en el footer */
+    }
+
+    footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        padding: 1rem;
+
+    }
 </style>
 
 <main>
 
-<body>
-    <header class="main-header">
-        <nav class="navbar navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+    <body>
+        <header class="main-header">
+            <nav class="navbar navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
 
-                </div>
-
-            </div>
-
-        </nav>
-    </header>
-
-
-    <div class="container text-center">
-    <h2 class="mt-4">Registro de asistencia</h2>
-        <div class="card mt-4">
-            <div class="card-body">
-                
-            
-            <div id="camara">
-                <div class="col-lg-12 col-md-12 col-xs-12">
-                    <div id="cuadro">
-                    <canvas id="canvas" class="border border-primary"></canvas>
                     </div>
+
                 </div>
+
+            </nav>
+        </header>
+
+
+        <div class="container text-center">
+            <h2 class="mt-4">Registro de asistencia</h2>
+            <div class="card mt-4">
+                <div class="card-body">
+
+
+                    <div id="camara">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <div id="cuadro">
+                                <canvas id="canvas" class="border border-primary"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            <div class="container text-center">
+            <button type="button" id="btnIngreso" onclick="iniciaCamara()" class="btn btn-success">Iniciar camara</button>
+
+            <button type="button" id="btnIngreso" onclick="apagaCamara()" class="btn btn-warning">Apagar camara</button>
             </div>
+        </div>
+        </div>
 
-          
-         </div>
 
-        
 
-          
-            </div>
+      
 
-    </div>
-  
 
-             </div class="container text-center">
-                <button type="button" id="btnIngreso" onclick="iniciaCamara()" class="btn btn-success">Iniciar camara</button>
-
-                <button type="button" id="btnIngreso" onclick="apagaCamara()" class="btn btn-warning">Apagar camara</button>
-            </div>
-
-    </main>
-    <footer class="bg-footer py-4 mt-auto">
+</main>
+<footer class="bg-footer py-4 mt-auto">
     <div class="container text-center"> <!-- Añadido text-center para centrar el contenido -->
         <h5>Contáctanos</h5>
         <ul class="list-unstyled">
@@ -154,17 +178,17 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
 
-    <script src=""></script>
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootbox.min.js"></script>
-    <script type="text/javascript" src="scripts/asistencia.js"?<?php echo time(); ?>></script>
+<script src=""></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootbox.min.js"></script>
+<script type="text/javascript" src="scripts/asistencia.js" ?<?php echo time(); ?>></script>
 
 </body>
 
-   
+
 </html>
 
 <?php
