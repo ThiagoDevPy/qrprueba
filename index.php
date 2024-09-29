@@ -78,6 +78,7 @@ if (!isset($_SESSION['user_id'])) {
         }
 </style>
 
+<main>
 
 <body>
     <header class="main-header">
@@ -107,15 +108,24 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </div>
 
-            <div>
+          
+         </div>
+
+        
+
+          
+            </div>
+
+    </div>
+  
+
+             </div class="container text-center">
                 <button type="button" id="btnIngreso" onclick="iniciaCamara()" class="btn btn-success">Iniciar camara</button>
 
                 <button type="button" id="btnIngreso" onclick="apagaCamara()" class="btn btn-warning">Apagar camara</button>
             </div>
-         </div>
 
-        </div>
-    </div>
+    </main>
     <footer class="bg-footer py-4 mt-auto">
     <div class="container text-center"> <!-- Añadido text-center para centrar el contenido -->
         <h5>Contáctanos</h5>
