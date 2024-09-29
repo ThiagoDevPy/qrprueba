@@ -41,7 +41,8 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         .bg-footer {
-            background-color: #0056b3;
+            background-color: #007bff;
+           
             /* Color azul para el footer */
             color: white;
             /* Color del texto en el footer */
