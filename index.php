@@ -82,8 +82,8 @@ if (!isset($_SESSION['user_id'])) {
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
-                <div class="card ">
-                    <div class="card-body">
+                <div >
+                    <div >
 
 
                         <div id="camara">
