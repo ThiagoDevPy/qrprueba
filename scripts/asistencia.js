@@ -12,18 +12,19 @@ var scanner = new Instascan.Scanner({
 
 
 
-function iniciaCamara() {
-    Instascan.Camera.getCameras().then(function(cameras) {
-        if (cameras.length > 0) {
-            let rearCamera = cameras.find(camera => camera.id.includes("back") || camera.id.includes("rear")) || cameras[0];
-            scanner.start(rearCamera);
-        } else {
-            alert('No se encontró una cámara');
+  function iniciaCamara() {
+            Instascan.Camera.getCameras().then(function(cameras) {
+                if (cameras.length > 0) {
+                    let rearCamera = cameras.find(camera => camera.id.includes("back") || camera.id.includes("rear")) || cameras[0];
+                    scanner.start(rearCamera);
+                    drawToCanvas(scanner.video); 
+                } else {
+                    alert('No se encontró una cámara');
+                }
+            }).catch(function(e) {
+                console.error(e);
+            });
         }
-    }).catch(function(e) {
-        console.error(e);
-    });
-}
 
 
 function drawToCanvas(video) {
