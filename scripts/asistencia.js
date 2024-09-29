@@ -30,7 +30,6 @@ function iniciaCamara() {
 }
 
 
-
 function drawToCanvas(video) {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
@@ -38,10 +37,12 @@ function drawToCanvas(video) {
     canvas.width = 300; // Asegúrate de que el canvas tenga el mismo tamaño
     canvas.height = 300;
 
-    // Dibuja el video en el canvas
-    setInterval(() => {
+    function draw() {
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    }, 100); // Dibuja cada 100ms (10fps)
+        requestAnimationFrame(draw); // Llama a draw nuevamente en el siguiente frame
+    }
+
+    draw(); // Inicia el ciclo de dibujo
 }
 
 
