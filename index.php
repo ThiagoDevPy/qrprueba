@@ -25,6 +25,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Login Sistema Ventas</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 
 
